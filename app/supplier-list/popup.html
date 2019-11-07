@@ -1,0 +1,43 @@
+<div id="modal-box">
+ <h1 mat-dialog-title>Add New Supplier</h1>
+ <div mat-dialog-content>
+    <div id="flex-row2">
+      <p id="expand-box2">  Supplier Name:</p>   
+      <p id="expand-box2"> <input placeholder="Entelect Software"  [(ngModel)]="data.newSupplier"><br></p>
+    </div>
+    <div id="flex-row2">
+      <p id="expand-box2">  City:</p>   
+      <p id="expand-box2"> <input placeholder="Cape Town"  [(ngModel)]="data.newCity"><br></p>
+    </div>
+    <div id="flex-row2">
+        <p id="expand-box2">  Reference:</p>   
+        <p id="expand-box2"> <input placeholder="ABC123"  [(ngModel)]="data.newReference"><br></p>
+      </div>
+   <!-- <mat-form-field>
+     <input matInput [(ngModel)]="data.newSupplier">
+   </mat-form-field> -->
+ </div>
+ <div mat-dialog-actions>
+   <button mat-button id = "remove-button" (click)="onNoClick()">Cancel</button>
+   <button mat-button id = "add-button"  [mat-dialog-close]="data" cdkFocusInitial>Add</button> 
+ </div>
+</div>
+
+<!-- <h1 mat-dialog-title>Hi</h1>
+<div id="color-box" mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.newSupplier">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button id="add-button" mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.newSupplier" cdkFocusInitial>Ok</button> 
+</div> -->
+<!-- 
+<p>
+    crear-proyecto works!
+</p> -->
+<!-- <div id="color-box" mat-dialog-content>
+    Hello, {{data.newSupplier}}
+</div> -->

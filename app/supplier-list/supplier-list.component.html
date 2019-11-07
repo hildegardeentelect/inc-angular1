@@ -1,0 +1,68 @@
+
+<div id="full-page" >
+  <div id="page-container">
+    <h1>Angular 1-x Incubator Pack </h1>
+    <h2>Suppliers</h2>
+    <div id="top-container">
+      <p id="searchbar-left">
+        <button id="add-button" (click)="openDialog()">
+          <mat-icon id="icon">add</mat-icon>
+          add<br>
+          supplier
+      </button> 
+      </p>
+      <p id="searchbar-right">
+        
+        <mat-icon id="dark-icon">search</mat-icon>
+        <input (keydown)="keyDownFunction($event)" id="searchbar" [(ngModel)]="searchText" placeholder="Search">
+      </p>
+    </div>
+    <li id="list-element" *ngFor="let item of items; let i = index;">
+      <!-- supplier name -->
+      <a (click)="this.speak(i)">{{item.name}}</a>
+
+      <!-- city -->
+      <div id="flex-row" *ngIf="this.suppliers[i].selected === true">
+        <p id="expand-box">  City:</p>   
+        <p id="expand-box"> <input name="City" placeholder={{item.city}}  [(ngModel)]="updatedCity"><br></p>
+      </div>
+      <!-- reference -->
+      <div id="flex-row" *ngIf="this.suppliers[i].selected === true">
+        <p id="expand-box"> Reference: </p>   
+        <p id="expand-box"> <input type="text" name="Reference" placeholder={{item.reference}} [(ngModel)]="updatedReference"><br>  </p>
+      </div>
+
+      <!-- buttons -->
+      <div class="container" id="expand-button-box" *ngIf="this.suppliers[i].selected === true">
+        <button id="remove-button" (click)=this.deleteSupplier(this.suppliers[i].id) >
+            <mat-icon id="icon">delete</mat-icon>
+            remove<br>
+            supplier
+        </button>  
+
+        <button id="update-button" (click)="this.updateSupplier(this.suppliers[i])">
+            <mat-icon id="icon">refresh</mat-icon>
+            update<br>
+            information
+        </button> 
+      </div>
+      
+    </li>
+    <!-- *ngIf="this.pager.currentPage != 1"  -->
+    <div  id="button-box" *ngIf="this.pager.totalPages" >
+        <button id="first-element" ng-class="{disabled:this.pager.currentPage === 1}" (click)="this.setPage(1) ">First
+        </button>
+        <!-- <button id="element" ng-class="{disabled:this.pager.currentPage === 1}" (click)="this.setPage(this.pager.currentPage - 1)">Previous
+        </button> -->
+        <button id="element" *ngFor="let num of this.getNumber(this.pager.totalPages); let i = index;" ng-class="{active:this.pager.currentPage === num}" (click)="this.setPage(i+1)">
+            {{i+1}}
+        </button>                
+        <!-- <button id="element" ng-class="{disabled:this.pager.currentPage === this.pager.totalPages}"  (click)="this.setPage(this.pager.currentPage + 1)">Next
+        </button> -->
+        <button id="element-last" ng-class="{disabled:this.pager.currentPage === this.pager.totalPages}" (click)="this.setPage(this.pager.totalPages)">Last
+        </button>
+        <!-- *ngIf="this.pager.currentPage != this.pager.totalPages"  -->
+
+    </div>
+  </div>
+</div>
